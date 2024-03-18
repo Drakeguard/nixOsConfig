@@ -17,6 +17,7 @@
       ../../system/hardware/printing.nix
       ../../system/hardware/bluetooth.nix
       ../../system/app/1password.nix
+
       #(./. + "../../../system/wm"+("/"+userSettings.wm)+".nix") # My window manager
       #../../system/app/flatpak.nix
       #../../system/app/virtualization.nix

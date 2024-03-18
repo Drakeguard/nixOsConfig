@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, systemSettings, inputs, ... }:
+{ config, pkgs, userSettings, systemSettings, nixvim, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -14,6 +14,7 @@
     ../../user/app/terminal/zsh.nix
     ../../user/app/terminal/alacritty.nix
     ../../user/app/keychain
+    ../../user/app/nixvim.nix
   ];
 
   home.stateVersion = "23.11"; # Please read the comment before changing.

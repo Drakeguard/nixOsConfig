@@ -63,20 +63,24 @@
           inherit pkgs;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix") # load home.nix from selected PROFILE
+              inputs.nixvim.homeManagerModules.nixvim
             #  inputs.nix-flatpak.homeManagerModules.nix-flatpak # Declarative flatpaks
           ];
-          extraSpecialArgs = {
+          extraSpecialArgs = {  inputs.nixvim.homeManagerModules.nixvim
             # pass config variables from above
             inherit pkgs-stable;
             inherit systemSettings;
             inherit userSettings;
-          };
+            inherit (inputs) nixvim;
+          };  inputs.nixvim.homeManagerModules.nixvim
         };
       };
       nixosConfigurations = {
         system = lib.nixosSystem {
           system = systemSettings.system;
-          modules = [ (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix") ]; # load configuration.nix from selected PROFILE
+          modules = [
+            (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+          ]; # load configuration.nix from selected PROFILE
           specialArgs = {
             # pass config variables from above
             inherit pkgs-stable;
@@ -105,6 +109,14 @@
     nh = {
       url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+      # url = "github:nix-community/nixvim/nixos-23.05";
+
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
