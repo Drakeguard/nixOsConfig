@@ -11,12 +11,14 @@
   imports = [
     ../../user/app/powerlevel10k
     ../../user/app/git
+    ../../user/app/terminal/zsh.nix
     ../../user/app/terminal/alacritty.nix
     ../../user/app/keychain
   ];
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     # Core
@@ -27,6 +29,7 @@
     rofi
     git
     syncthing
+    neofetch
 
     # Media
     tuxpaint
@@ -44,27 +47,4 @@
       XDG_GAME_SAVE_DIR = "${config.home.homeDirectory}/Media/Game Saves";
     };
   };
-
-  programs.zsh = {
-    enable = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "thefuck" ];
-      #theme = "robbyrussell";
-    };
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-    ];
-  };
-
-  fonts.fontconfig.enable = true;
-
-  programs.gh = {
-    enable = true;
-  };
-
 }

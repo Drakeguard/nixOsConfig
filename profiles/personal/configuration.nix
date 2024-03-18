@@ -106,14 +106,6 @@
 
   fonts.fontDir.enable = true;
 
-  #xdg.portal = {
-  #  enable = true;
-  #  extraPortals = [
-  #    pkgs.xdg-desktop-portal
-  #    pkgs.xdg-desktop-portal-gtk
-  #  ];
-  #};
-
   # It is ok to leave this unchanged for compatibility purposes
   system.stateVersion = "23.11";
 
