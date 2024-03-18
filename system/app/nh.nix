@@ -11,6 +11,6 @@
   };
 
   environment.variables = {
-    FLAKE = "/home/" + userSettings.username + "/DEVELOP/NixOSConfig";
+    FLAKE = "/home/" + userSettings.username + "/.dotfiles";
   };
 }
